@@ -1,6 +1,7 @@
 package com.cerg.portal.capacitacionesapi.service;
 
 import com.cerg.portal.capacitacionesapi.entity.Curso;
+import com.cerg.portal.capacitacionesapi.model.Enum.EnumEstado;
 import com.cerg.portal.capacitacionesapi.repository.CursoRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public Curso guardarCurso(Curso curso) {
+    public Curso crear(Curso curso) {
         return cursoRepository.save(curso);
     }
 
@@ -32,14 +33,24 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public Curso actualizarCurso(Long id, Curso curso) {
+    public Curso editarCurso(Long id, Curso curso) {
         Curso c = cursoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
         c.setTitulo(curso.getTitulo());
         c.setModulo(curso.getModulo());
         c.setDescripcion(curso.getDescripcion());
         c.setUrlImagen(curso.getUrlImagen());
+        c.setEstado(curso.getEstado());
 
         return cursoRepository.save(c);
+    }
+
+    @Override
+    public Curso actualizarEstado(Long id, String estadoNuevo) {
+        Curso curso = cursoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
+
+        curso.setEstado(EnumEstado.valueOf(estadoNuevo));
+        return cursoRepository.save(curso);
     }
 }

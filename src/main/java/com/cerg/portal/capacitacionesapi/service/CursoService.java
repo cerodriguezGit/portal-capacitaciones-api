@@ -6,11 +6,13 @@ import java.util.List;
 
 public interface CursoService {
 
-    Curso guardarCurso(Curso curso);
+    Curso crear(Curso curso);
 
     List<Curso> listarCursos();
 
     Curso obtenerCursoId(Long id);
 
-    Curso actualizarCurso(Long id, Curso curso);
+    Curso editarCurso(Long id, Curso curso);
+
+    Curso actualizarEstado(Long id, String estado);
 }

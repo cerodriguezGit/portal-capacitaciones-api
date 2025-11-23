@@ -5,6 +5,7 @@ import com.cerg.portal.capacitacionesapi.service.CursoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controlador REST para gestionar las operaciones relacionadas con los cursos.
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/cursos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CursoController {
 
     private final CursoService cursoService;
@@ -26,8 +28,8 @@ public class CursoController {
      * @return El curso recién creado.
      */
     @PostMapping
-    public Curso crearCurso(@RequestBody Curso curso) {
-        return cursoService.guardarCurso(curso);
+    public Curso crear(@RequestBody Curso curso) {
+        return cursoService.crear(curso);
     }
 
     /**
@@ -35,7 +37,7 @@ public class CursoController {
      * @return Una lista de todos los cursos.
      */
     @GetMapping
-    public List<Curso> listarCursos() {
+    public List<Curso> listar() {
         return cursoService.listarCursos();
     }
 
@@ -50,13 +52,24 @@ public class CursoController {
     }
 
     /**
-     * Actualiza un curso existente por su ID.
-     * @param id    El ID del curso que se va a actualizar, extraído de la URL.
+     * edita un curso existente por su ID.
+     * @param id    El ID del curso que se va a editar, extraído de la URL.
      * @param curso El objeto Curso con la información actualizada, proporcionado en el cuerpo de la solicitud.
-     * @return El curso actualizado.
+     * @return El curso editado.
      */
     @PutMapping("/{id}")
-    public Curso actualizar(@PathVariable Long id, @RequestBody Curso curso) {
-        return cursoService.actualizarCurso(id, curso);
+    public Curso modificar(@PathVariable Long id, @RequestBody Curso curso) {
+        return cursoService.editarCurso(id, curso);
+    }
+
+    /**
+     * Actualiza el estado de progreso de un curso
+     * @param id
+     * @param body
+     * @return curso con estado actualizado
+     */
+    @PatchMapping("/{id}/estado")
+    public Curso actualizarEstado(@PathVariable Long id, @RequestBody Map<String, String> body) {
+        return cursoService.actualizarEstado(id, body.get("estado"));
     }
 }

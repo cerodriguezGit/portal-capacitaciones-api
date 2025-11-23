@@ -1,5 +1,6 @@
 package com.cerg.portal.capacitacionesapi.entity;
 
+import com.cerg.portal.capacitacionesapi.model.Enum.EnumEstado;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,4 +24,7 @@ public class Curso {
     private String descripcion;
 
     private String urlImagen;
+
+    @Enumerated(EnumType.STRING)
+    private EnumEstado estado;
 }
