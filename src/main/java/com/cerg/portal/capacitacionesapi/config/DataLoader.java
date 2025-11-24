@@ -24,10 +24,10 @@ public class DataLoader {
             }
 
             if (cursoRepo.count() == 0) {
-                cursoRepo.save(new Curso(null, "Angular Básico", "Frontend", "Curso introductorio fundmentos basicos", null, EnumEstado.NO_INICIADO));
-                cursoRepo.save(new Curso(null, "Spring Boot API", "APIs RESTFul", "Aprende a crear una API", null, EnumEstado.NO_INICIADO));
-                cursoRepo.save(new Curso(null, "AWS Fundamentos", "Cloud", "Conceptos Cloud", null, EnumEstado.NO_INICIADO));
-                cursoRepo.save(new Curso(null, "SQL Avanzado", "Base de Datos", "Queries avanzados", null, EnumEstado.NO_INICIADO));
+                cursoRepo.save(new Curso(null, "Angular Básico", "Frontend", "Curso introductorio fundmentos basicos", null, EnumEstado.PENDIENTE));
+                cursoRepo.save(new Curso(null, "Spring Boot API", "APIs RESTFul", "Aprende a crear una API", null, EnumEstado.PENDIENTE));
+                cursoRepo.save(new Curso(null, "AWS Fundamentos", "Cloud", "Conceptos Cloud", null, EnumEstado.PENDIENTE));
+                cursoRepo.save(new Curso(null, "SQL Avanzado", "Base de Datos", "Queries avanzados", null, EnumEstado.PENDIENTE));
             }
         };
     }
