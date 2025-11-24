@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/v1/cursos")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://portal-capacitaciones-web.onrender.com"})
 public class CursoController {
 
     private final CursoService cursoService;
