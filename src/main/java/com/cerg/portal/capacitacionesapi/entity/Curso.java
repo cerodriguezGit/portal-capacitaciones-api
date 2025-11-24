@@ -23,8 +23,6 @@ public class Curso {
 
     private String descripcion;
 
-    private String urlImagen;
-
     @Enumerated(EnumType.STRING)
     private EnumEstado estado;
 }

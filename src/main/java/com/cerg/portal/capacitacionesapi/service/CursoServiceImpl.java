@@ -39,7 +39,6 @@ public class CursoServiceImpl implements CursoService {
         c.setTitulo(curso.getTitulo());
         c.setModulo(curso.getModulo());
         c.setDescripcion(curso.getDescripcion());
-        c.setUrlImagen(curso.getUrlImagen());
         c.setEstado(curso.getEstado());
 
         return cursoRepository.save(c);
